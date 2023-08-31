@@ -1,5 +1,6 @@
 package com.mysite.rest.employee.entity;
 
+import com.mysite.rest.employee.dto.EmployeeDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table (name = "employees")
 public class Employee {
-	
+		
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id; 
@@ -31,6 +32,12 @@ public class Employee {
 	
 	@Column (name = "email_id")
 	private String emailId; 
+	
+	public Employee (EmployeeDTO employeeDTO) {
+		this.firstName = employeeDTO.getFirstName();
+		this.lastName = employeeDTO.getLastName(); 
+		this.emailId = employeeDTO.getEmailId(); 
+	}
 	
 	
 }
